@@ -22,7 +22,9 @@ public class Wall implements Structure {
 
     @Override
     public List<Block> findBlocksByMaterial(String material) {
-        return Collections.emptyList();
+        return blocks.stream()
+                .filter(block -> block.getMaterial().equals(material))
+                .toList();
     }
 
     @Override
