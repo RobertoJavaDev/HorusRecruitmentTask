@@ -1,5 +1,6 @@
 package pl.robertojavadev;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -9,12 +10,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WallTest {
 
+    private static final BlockImpl BLOCK = new BlockImpl("black", "cotton");
+
     private Wall wall;
+
+    @BeforeEach
+    void SetUp() {
+
+        wall = new Wall();
+    }
 
     @Test
     void shouldReturnOptionalEmptyWhenNotFoundBlockByColor() {
         //given
-        wall = new Wall();
 
         //when
 
@@ -25,7 +33,6 @@ class WallTest {
     @Test
     void shouldReturnEmptyBlockListWhenNotFoundBlockByMaterial() {
         //given
-        wall = new Wall();
 
         //when
 
@@ -36,7 +43,6 @@ class WallTest {
     @Test
     void shouldReturnZeroWhenResourceIsEmpty() {
         //given
-        wall = new Wall();
 
         //when
 
@@ -47,10 +53,9 @@ class WallTest {
     @Test
     void shouldReturnNumberOfBlocksWhenBlockAdded() {
         //given
-        wall = new Wall();
+        wall.addBlock(BLOCK);
 
         //when
-        wall.addBlock(new BlockImpl("black", "cotton"));
 
         //then
         assertEquals(wall.count(), 1);
