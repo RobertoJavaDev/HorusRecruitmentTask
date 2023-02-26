@@ -1,7 +1,6 @@
 package pl.robertojavadev;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +15,7 @@ public class Wall implements Structure {
     @Override
     public Optional<Block> findBlockByColor(String color) {
         return blocks.stream()
+                .flatMap(Block::toStream)
                 .filter(block -> block.getColor().equals(color))
                 .findFirst();
     }

@@ -1,5 +1,7 @@
 package pl.robertojavadev;
 
+import java.util.stream.Stream;
+
 public class BlockImpl implements Block {
 
     private final String color;
@@ -18,5 +20,10 @@ public class BlockImpl implements Block {
     @Override
     public String getMaterial() {
         return material;
+    }
+
+    @Override
+    public Stream<Block> toStream() {
+        return Stream.of(this);
     }
 }

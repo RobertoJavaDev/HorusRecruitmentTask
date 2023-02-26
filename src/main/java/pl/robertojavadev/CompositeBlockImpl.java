@@ -3,6 +3,7 @@ package pl.robertojavadev;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class CompositeBlockImpl extends BlockImpl implements CompositeBlock{
 
@@ -19,5 +20,13 @@ public class CompositeBlockImpl extends BlockImpl implements CompositeBlock{
     @Override
     public List<Block> getBlocks() {
         return Collections.unmodifiableList(blocks);
+    }
+
+    @Override
+    public Stream<Block> toStream() {
+        return Stream.concat(
+                super.toStream(),
+                blocks.stream().flatMap(Block::toStream)
+        );
     }
 }
