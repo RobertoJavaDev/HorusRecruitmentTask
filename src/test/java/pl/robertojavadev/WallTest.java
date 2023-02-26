@@ -29,9 +29,10 @@ class WallTest {
         wall.addBlock(BLOCK_2);
 
         //when
+        Optional<Block> result = wall.findBlockByColor("black");
 
         //then
-        assertEquals(wall.findBlockByColor("black"), Optional.empty());
+        assertEquals(result, Optional.empty());
     }
 
     @Test
@@ -40,9 +41,10 @@ class WallTest {
         wall.addBlock(BLOCK_2);
 
         //when
+        List<Block> result = wall.findBlocksByMaterial("cotton");
 
         //then
-        assertEquals(wall.findBlocksByMaterial("cotton"), List.of());
+        assertEquals(result, List.of());
     }
 
     @Test
@@ -50,9 +52,10 @@ class WallTest {
         //given
 
         //when
+        int result = wall.count();
 
         //then
-        assertEquals(wall.count(), 0);
+        assertEquals(result, 0);
     }
 
     @Test
@@ -61,9 +64,10 @@ class WallTest {
         wall.addBlock(BLOCK_1);
 
         //when
+        int result = wall.count();
 
         //then
-        assertEquals(wall.count(), 1);
+        assertEquals(result, 1);
     }
 
     @Test
@@ -71,13 +75,14 @@ class WallTest {
         //given
         wall.addBlock(BLOCK_1);
         wall.addBlock(BLOCK_2);
-
-        //when
         BlockImpl block = BLOCK_3;
         wall.addBlock(block);
 
+        //when
+        Block result = wall.findBlockByColor("orange").get();
+
         //then
-        assertEquals(wall.findBlockByColor("orange").get(), block);
+        assertEquals(result, block);
     }
 
     @Test
