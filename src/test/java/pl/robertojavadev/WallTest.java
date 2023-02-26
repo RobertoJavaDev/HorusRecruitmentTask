@@ -12,7 +12,7 @@ class WallTest {
 
     private static final BlockImpl BLOCK_1 = new BlockImpl("black", "cotton");
     private static final BlockImpl BLOCK_2 = new BlockImpl("white", "silk");
-    private static final BlockImpl BLOCK_3 = new BlockImpl("orange", "wool");
+    private static final BlockImpl BLOCK_3 = new BlockImpl("orange", "cotton");
     private static final BlockImpl BLOCK_4 = new BlockImpl("red", "silk");
     private static final CompositeBlockImpl COMPOSITE_BLOCK_1 =
             new CompositeBlockImpl("white", "cotton");
@@ -162,9 +162,9 @@ class WallTest {
         compositeBlock.addBlock(BLOCK_3);
 
         //when
-        List<Block> result = wall.findBlocksByMaterial("silk");
+        List<Block> result = wall.findBlocksByMaterial("cotton");
 
         //then
-        assertEquals(result.size(), 2);
+        assertEquals(result.size(), 3);
     }
 }
