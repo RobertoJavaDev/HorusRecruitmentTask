@@ -13,6 +13,7 @@ class WallTest {
     private static final BlockImpl BLOCK_1 = new BlockImpl("black", "cotton");
     private static final BlockImpl BLOCK_2 = new BlockImpl("white", "silk");
     private static final BlockImpl BLOCK_3 = new BlockImpl("orange", "wool");
+    private static final BlockImpl BLOCK_4 = new BlockImpl("red", "silk");
 
     private Wall wall;
 
@@ -77,5 +78,20 @@ class WallTest {
 
         //then
         assertEquals(wall.findBlockByColor("orange").get(), block);
+    }
+
+    @Test
+    void shouldReturnListOfBlocksWhenFindBlocksByMaterial() {
+        //given
+        wall.addBlock(BLOCK_1);
+        wall.addBlock(BLOCK_2);
+        wall.addBlock(BLOCK_3);
+        wall.addBlock(BLOCK_4);
+
+        //when
+        List<Block> result = wall.findBlocksByMaterial("silk");
+
+        //then
+        assertEquals(result.size(), 2);
     }
 }
