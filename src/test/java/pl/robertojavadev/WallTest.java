@@ -14,6 +14,13 @@ class WallTest {
     private static final BlockImpl BLOCK_2 = new BlockImpl("white", "silk");
     private static final BlockImpl BLOCK_3 = new BlockImpl("orange", "wool");
     private static final BlockImpl BLOCK_4 = new BlockImpl("red", "silk");
+    private static final CompositeBlockImpl COMPOSITE_BLOCK_1 =
+            new CompositeBlockImpl("white", "cotton");
+    private static final CompositeBlockImpl COMPOSITE_BLOCK_2 =
+            new CompositeBlockImpl("black", "wool");
+    private static final CompositeBlockImpl COMPOSITE_BLOCK_3 =
+            new CompositeBlockImpl("orange", "wool");
+
 
     private Wall wall;
 
@@ -103,9 +110,9 @@ class WallTest {
     @Test
     void shouldReturnCompositeBlockWhenFindByColor() {
         //given
-        wall.addBlock(new CompositeBlockImpl("white", "cotton"));
-        wall.addBlock(new CompositeBlockImpl("black", "wool"));
-        CompositeBlock compositeBlock = new CompositeBlockImpl("orange", "wool");
+        wall.addBlock(COMPOSITE_BLOCK_1);
+        wall.addBlock(COMPOSITE_BLOCK_2);
+        CompositeBlock compositeBlock = COMPOSITE_BLOCK_3;
         wall.addBlock(compositeBlock);
 
         //when
@@ -118,9 +125,9 @@ class WallTest {
     @Test
     void shouldReturnCompositeBlockWhenFindByMaterial() {
         //given
-        wall.addBlock(new CompositeBlockImpl("white", "cotton"));
-        wall.addBlock(new CompositeBlockImpl("black", "wool"));
-        wall.addBlock(new CompositeBlockImpl("orange", "wool"));
+        wall.addBlock(COMPOSITE_BLOCK_1);
+        wall.addBlock(COMPOSITE_BLOCK_2);
+        wall.addBlock(COMPOSITE_BLOCK_3);
 
         //when
         List<Block> result = wall.findBlocksByMaterial("wool");
