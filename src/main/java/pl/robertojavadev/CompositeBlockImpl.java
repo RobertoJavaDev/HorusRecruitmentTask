@@ -1,27 +1,19 @@
 package pl.robertojavadev;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CompositeBlockImpl implements CompositeBlock{
+public class CompositeBlockImpl extends BlockImpl implements CompositeBlock{
 
-    private String color;
-    private String material;
-    private List<Block> blocks;
+    private List<Block> blocks = new ArrayList<>();
 
     CompositeBlockImpl(String color, String material) {
-        this.color = color;
-        this.material = material;
+        super(color, material);
     }
 
-    @Override
-    public String getColor() {
-        return color;
-    }
-
-    @Override
-    public String getMaterial() {
-        return material;
+    public void addBlock(Block block){
+        blocks.add(block);
     }
 
     @Override
