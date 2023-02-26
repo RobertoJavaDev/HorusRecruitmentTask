@@ -151,4 +151,20 @@ class WallTest {
         //then
         assertEquals(result, BLOCK_3);
     }
+
+    @Test
+    void shouldReturnNestedBlockWhenFindByMaterial() {
+        //given
+        CompositeBlockImpl compositeBlock = COMPOSITE_BLOCK_1;
+        wall.addBlock(BLOCK_1);
+        wall.addBlock(BLOCK_2);
+        wall.addBlock(compositeBlock);
+        compositeBlock.addBlock(BLOCK_3);
+
+        //when
+        List<Block> result = wall.findBlocksByMaterial("silk");
+
+        //then
+        assertEquals(result.size(), 2);
+    }
 }
