@@ -25,6 +25,7 @@ class WallTest {
     @Test
     void shouldReturnOptionalEmptyWhenNotFoundBlockByColor() {
         //given
+        wall.addBlock(BLOCK_2);
 
         //when
 
@@ -35,6 +36,7 @@ class WallTest {
     @Test
     void shouldReturnEmptyBlockListWhenNotFoundBlockByMaterial() {
         //given
+        wall.addBlock(BLOCK_2);
 
         //when
 
