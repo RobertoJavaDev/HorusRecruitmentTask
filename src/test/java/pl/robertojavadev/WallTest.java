@@ -10,7 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WallTest {
 
-    private static final BlockImpl BLOCK = new BlockImpl("black", "cotton");
+    private static final BlockImpl BLOCK_1 = new BlockImpl("black", "cotton");
+    private static final BlockImpl BLOCK_2 = new BlockImpl("white", "silk");
+    private static final BlockImpl BLOCK_3 = new BlockImpl("orange", "wool");
 
     private Wall wall;
 
@@ -53,11 +55,25 @@ class WallTest {
     @Test
     void shouldReturnNumberOfBlocksWhenBlockAdded() {
         //given
-        wall.addBlock(BLOCK);
+        wall.addBlock(BLOCK_1);
 
         //when
 
         //then
         assertEquals(wall.count(), 1);
+    }
+
+    @Test
+    void shouldReturnBlockWhenFindBlockByColor() {
+        //given
+        wall.addBlock(BLOCK_1);
+        wall.addBlock(BLOCK_2);
+
+        //when
+        BlockImpl block = BLOCK_3;
+        wall.addBlock(block);
+
+        //then
+        assertEquals(wall.findBlockByColor("orange").get(), block);
     }
 }
