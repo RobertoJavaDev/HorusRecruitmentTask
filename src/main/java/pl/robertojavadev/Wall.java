@@ -15,7 +15,9 @@ public class Wall implements Structure {
 
     @Override
     public Optional<Block> findBlockByColor(String color) {
-        return Optional.empty();
+        return blocks.stream()
+                .filter(block -> block.getColor().equals(color))
+                .findFirst();
     }
 
     @Override
