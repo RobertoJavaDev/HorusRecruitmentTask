@@ -43,4 +43,16 @@ class WallTest {
         //then
         assertEquals(wall.count(), 0);
     }
+
+    @Test
+    void shouldReturnNumberOfBlocksWhenBlockAdded() {
+        //given
+        wall = new Wall();
+
+        //when
+        wall.addBlock(new BlockImpl("black", "cotton"));
+
+        //then
+        assertEquals(wall.count(), 1);
+    }
 }
