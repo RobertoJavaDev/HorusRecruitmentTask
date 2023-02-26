@@ -99,4 +99,33 @@ class WallTest {
         //then
         assertEquals(result.size(), 2);
     }
+
+    @Test
+    void shouldReturnCompositeBlockWhenFindByColor() {
+        //given
+        wall.addBlock(new CompositeBlock("white", "cotton"));
+        wall.addBlock(new CompositeBlock("black", "wool"));
+        CompositeBlock compositeBlock = new CompositeBlock("orange", "wool");
+        wall.addBlock(compositeBlock);
+
+        //when
+        Optional<Block> result = wall.findBlockByColor("orange");
+
+        //then
+        assertEquals(result, compositeBlock);
+    }
+
+    @Test
+    void shouldReturnCompositeBlockWhenFindByMaterial() {
+        //given
+        wall.addBlock(new CompositeBlock("white", "cotton"));
+        wall.addBlock(new CompositeBlock("black", "wool"));
+        wall.addBlock(new CompositeBlock("orange", "wool"));
+
+        //when
+        List<Block> result = wall.findBlocksByMaterial("wool");
+
+        //then
+        assertEquals(result.size(), 2);
+    }
 }
