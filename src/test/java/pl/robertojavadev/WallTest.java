@@ -135,4 +135,20 @@ class WallTest {
         //then
         assertEquals(result.size(), 2);
     }
+
+    @Test
+    void shouldReturnNestedBlockWhenFindByColor() {
+        //given
+        CompositeBlockImpl compositeBlock = new CompositeBlockImpl("silver", "wool");
+        wall.addBlock(BLOCK_1);
+        wall.addBlock(BLOCK_2);
+        wall.addBlock(compositeBlock);
+        compositeBlock.addBlock(BLOCK_3);
+
+        //when
+        Block result = wall.findBlockByColor("orange").get();
+
+        //then
+        assertEquals(result, BLOCK_3);
+    }
 }
