@@ -25,6 +25,9 @@ public class Wall implements Structure {
 
     @Override
     public List<Block> findBlocksByMaterial(String material) {
+        if (material == null || material.trim().equals("")) {
+            throw new IllegalArgumentException("The provided value is incorrect");
+        }
         return blocks.stream()
                 .flatMap(Block::toStream)
                 .filter(block -> block.getMaterial().equals(material))
