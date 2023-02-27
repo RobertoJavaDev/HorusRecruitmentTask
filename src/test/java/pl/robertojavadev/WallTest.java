@@ -167,4 +167,20 @@ class WallTest {
         //then
         assertEquals(result.size(), 3);
     }
+
+    @Test
+    void shouldReturnProperlySizeWhenBlocksAreNested() {
+        //given
+        CompositeBlockImpl compositeBlock = COMPOSITE_BLOCK_1;
+        wall.addBlock(BLOCK_1);
+        wall.addBlock(BLOCK_2);
+        wall.addBlock(compositeBlock);
+        compositeBlock.addBlock(BLOCK_3);
+
+        //when
+        int result = wall.count();
+
+        //then
+        assertEquals(result, 4);
+    }
 }
