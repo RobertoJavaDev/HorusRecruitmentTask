@@ -183,4 +183,37 @@ class WallTest {
         //then
         assertEquals(result, 4);
     }
+
+    @Test
+    void shouldThrowAnExceptionWhenColorIsNull() {
+        //given
+        wall.addBlock(BLOCK_1);
+
+        //when
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> wall.findBlockByColor(null));
+    }
+
+    @Test
+    void shouldThrowAnExceptionWhenColorIsEmpty() {
+        //given
+        wall.addBlock(BLOCK_1);
+
+        //when
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> wall.findBlockByColor(""));
+    }
+
+    @Test
+    void shouldThrowAnExceptionWhenColorHasWhiteSpaces() {
+        //given
+        wall.addBlock(BLOCK_1);
+
+        //when
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> wall.findBlockByColor("    "));
+    }
 }
