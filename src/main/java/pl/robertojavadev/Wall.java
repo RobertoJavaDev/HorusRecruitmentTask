@@ -30,6 +30,8 @@ public class Wall implements Structure {
 
     @Override
     public int count() {
-        return blocks.size();
+        return (int) blocks.stream()
+                .flatMap(Block::toStream)
+                .count();
     }
 }
