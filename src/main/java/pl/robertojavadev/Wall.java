@@ -14,6 +14,9 @@ public class Wall implements Structure {
 
     @Override
     public Optional<Block> findBlockByColor(String color) {
+        if (color == null || color.trim().equals("")) {
+            throw new IllegalArgumentException("The provided value is incorrect");
+        }
         return blocks.stream()
                 .flatMap(Block::toStream)
                 .filter(block -> block.getColor().equals(color))
